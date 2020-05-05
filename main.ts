@@ -21,7 +21,7 @@ namespace myTiles {
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeScoreBy(1)
-    if (game.runtime() - time_list[time_list.length - 1] > 30000) {
+    if (game.runtime() - time_list[time_list.length - 1] > 3000) {
         music.baDing.play()
         Hero.destroy()
         toilet_roll.destroy()
@@ -31,12 +31,15 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
             music.magicWand.playUntilDone()
             game.splash("A New High Score!")
             effects.confetti.startScreenEffect()
-            pause(2000)
+            pause(4000)
             effects.confetti.endScreenEffect()
             high_score_list.push(info.score())
         }
         time_list.push(game.runtime())
-        initialise()
+        game.splash("Press A to play again.")
+        if (controller.A.isPressed()) {
+            initialise()
+        }
     }
     toilet_roll.setPosition(Math.randomRange(4, 160), Math.randomRange(4, 120))
 })
