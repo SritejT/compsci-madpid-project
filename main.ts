@@ -21,7 +21,7 @@ namespace myTiles {
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeScoreBy(1)
-    if (game.runtime() - time_list[time_list.length - 1] > 3000) {
+    if (game.runtime() - time_list[time_list.length - 1] > 30000) {
         music.baDing.play()
         Hero.destroy()
         toilet_roll.destroy()
